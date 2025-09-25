@@ -1,20 +1,34 @@
 import { FaLock, FaUser } from "react-icons/fa"
+import { useState } from "react"
+import "./Login.css"
 
 import (FaUser)
 
 const Login = () => {
+
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        
+        alert("enviado os dados: " + username + " e " + password)
+    }
+
   return (
     <div className="container">
-        <form>
+        <form onSubmit={handleSubmit}>
             <h1>Acesse o sistema</h1>
             
             <div>
-            <input type="email" placeholder='E-mail' />
+            <input type="email" placeholder='E-mail' 
+            onChange={(e) => setUsername(e.target.value)}/>
             <FaUser className="icon"/>
             </div>
 
             <div>
-            <input type="password" placeholder='Senha' />
+            <input type="password" placeholder='Senha' 
+            onChange={(e) => setPassword(e.target.value)}/>
             <FaLock className="icon"/>
             </div>
 
